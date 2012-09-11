@@ -10,6 +10,47 @@
 var x = 'O';
 var y = 0;
 
+var a = {
+  httpRequest1: null,
+  httpRequest2: null
+};
+
+function httpRequest1(callback) {
+  setTimeout(function() {
+    console.log('httprequest1 finished!');
+    callback('cool');
+  }, 1000);
+}
+
+function httpRequest2(callback) {
+  setTimeout(function() {
+    console.log('httprequest2 finished!');
+    callback('httpRequest2');
+  }, 2000);
+}
+
+function simulateHttpRequests() {
+  httpRequest1(function(result) {
+    a.httpRequest1 = result;
+    if (a.httpRequest2 !== null) {
+      finalCallbackFunction();
+    }
+  });
+  httpRequest2(function(result) {
+    a.httpRequest2 = result;
+    if (a.httpRequest1 !== null) {
+      finalCallbackFunction();
+    }
+  });
+}
+
+function finalCallbackFunction() {
+  console.log('both requests finished!');
+  console.log('results:');
+  console.log(a);
+}
+
+
 function addDot() {
   x = 's' + x;
   y++;
@@ -60,7 +101,8 @@ function run() {
 
 try {
   // run();
-  blahBlah();
+  // blahBlah();
+  simulateHttpRequests();
   document.getElementById('demo').innerHTML=x;
   document.getElementById('view').innerHTML=y;
 } catch (err) {
