@@ -21,6 +21,18 @@ function sleep(x) {
   }
 }
 
+function runAsyncFunc(callback) {
+  callback();
+  sleep(100000000);
+  console.log('yo!');
+}
+
+function blahBlah() {
+  runAsyncFunc(function() {
+    console.log('run this now!');
+  });
+}
+
 function run() {
   var i = 0;
   while (i < 10) {
@@ -32,7 +44,6 @@ function run() {
         document.getElementById('view').innerHTML=y;
         console.log(y);
       }, 1000);
-      sleep(10000000);
       i++;
     } catch (err) {
       txt="There was an error on this page.\n\n";
@@ -44,7 +55,8 @@ function run() {
 }
 
 try {
-  run();
+  // run();
+  blahBlah();
   document.getElementById('demo').innerHTML=x;
   document.getElementById('view').innerHTML=y;
 } catch (err) {
