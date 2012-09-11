@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo">Hi</p>
+<p id="view">v</p>
+
+<script>
+
+var x = 'O';
+var y = 0;
+
+function addDot() {
+  x = 's' + x;
+  y++;
+}
+
+function run() {
+  var i = 0;
+  while (i<10) {
+    try {
+      setTimeout(function () {
+        x = 's' + x;
+        y++;
+      },1000);
+      document.getElementById('demo').innerHTML=x;
+      document.getElementById('view').innerHTML=y;
+      i++;
+    }
+    catch(err) {
+      txt="There was an error on this page.\n\n";
+      txt+='Error description: ' + err.message + "\n\n";
+      txt+="Click OK to continue.\n\n";
+      alert(txt);
+    }
+  }
+}
+
+try {
+  run();
+  document.getElementById('demo').innerHTML=x;
+  document.getElementById('view').innerHTML=y;
+}
+catch(err) {
+  txt="There was an error on this page.\n\n";
+  txt+='Error description: ' + err.message + "\n\n";
+  txt+="Click OK to continue.\n\n";
+  alert(txt);
+}
+</script>
+</body>
+</html>
