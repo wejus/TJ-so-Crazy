@@ -23,8 +23,10 @@ function sleep(x) {
 
 function runAsyncFunc(callback) {
   console.log('before callback');
-  x += 's';
-  callback(x);
+  setTimeout(function() {
+    x += 's';
+    callback(x);
+  }, 1000);
   console.log('yo!');
 }
 
