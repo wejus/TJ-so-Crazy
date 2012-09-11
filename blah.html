@@ -22,8 +22,8 @@ function sleep(x) {
 }
 
 function runAsyncFunc(callback) {
+  console.log('before callback');
   callback();
-  sleep(100000000);
   console.log('yo!');
 }
 
