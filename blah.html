@@ -23,15 +23,15 @@ function sleep(x) {
 
 function runAsyncFunc(callback) {
   console.log('before callback');
-  callback();
+  x += 's';
+  callback(x);
   console.log('yo!');
 }
 
 function blahBlah() {
-  runAsyncFunc(function() {
-    setTimeout(function() {
-      console.log('run this now!')
-    }, 1000);
+  runAsyncFunc(function(x) {
+    // we know that the "calculation" has been done now
+    console.log(x);
   });
 }
 
