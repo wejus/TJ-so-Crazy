@@ -29,7 +29,9 @@ function runAsyncFunc(callback) {
 
 function blahBlah() {
   runAsyncFunc(function() {
-    console.log('run this now!');
+    setTimeout(function() {
+      console.log('run this now!')
+    }, 1000);
   });
 }
 
