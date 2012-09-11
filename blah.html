@@ -20,15 +20,14 @@ function run() {
   while (i < 10) {
     try {
       setTimeout(function () {
-        console.log(x);
         x = 's' + x;
         y++;
-      },1000);
-      document.getElementById('demo').innerHTML=x;
-      document.getElementById('view').innerHTML=y;
+        document.getElementById('demo').innerHTML=x;
+        document.getElementById('view').innerHTML=y;
+        console.log(y);
+      }, 1000);
       i++;
-    }
-    catch (err) {
+    } catch (err) {
       txt="There was an error on this page.\n\n";
       txt+='Error description: ' + err.message + "\n\n";
       txt+="Click OK to continue.\n\n";
@@ -41,8 +40,7 @@ try {
   run();
   document.getElementById('demo').innerHTML=x;
   document.getElementById('view').innerHTML=y;
-}
-catch(err) {
+} catch (err) {
   txt="There was an error on this page.\n\n";
   txt+='Error description: ' + err.message + "\n\n";
   txt+="Click OK to continue.\n\n";
