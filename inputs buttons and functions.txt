@@ -1,0 +1,4 @@
+//Read three inputs, find the largest
+<html>
+<body>
+<input id="first" type="text" length=30>

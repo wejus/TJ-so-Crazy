@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="styles/base.css" />
+		<title>Paper Squares (Many)</title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="600" height="600"></canvas>
+		<!-- div id="help">
+			<a target="_blank" href="http://paperjs.org/examples">Paper.js examples &rarr;</a><br />
+			<a target="_blank" href="http://paperjs.org/tutorials">Paper.js tutorials &rarr;</a><br />
+		</div -->
+		<script charset="utf-8" src="scripts/paper.js"></script>
+		<script charset="utf-8" src="scripts/skip.js"></script>
+		<script charset="utf-8" type="text/paperscript" canvas="myCanvas">
+
+
+	
+
+var
+squares = [],
+i = 0,
+square
+
+
+
+
+for( i = 0; i < 100; i ++ ){
+	
+	var square = new Path.Rectangle( Point.random() * view.size, 20 )
+	square.fillColor = 'white'
+	square.fillColor.alpha = 0.5
+	
+	
+	//  Let's create a 'destination' property for each square.
+
+	square.destination = Point.random() * view.size
+
+
+	//  And we'll add each square to our squares array.
+	
+	squares.push( square )
+}
+
+
+
+
+function onFrame( event ){
+
+
+	//  Let's loop through our squares array
+	//  and move each one towards its destination.	
+	//  If it's close to its destination, we'll pick a new destination.
+
+	squares.forEach( function( square ){
+
+		var vector = square.destination - square.position
+		square.position += vector / 30
+		if( vector.length < 5 ){
+
+			square.destination = Point.random() * view.size
+		}
+	})
+}
+
+
+
+
+		</script>
+	</body>
+</html>

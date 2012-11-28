@@ -1,0 +1,24 @@
+<html>
+<body>
+<//Read three inputs, find the largest>
+
+<input id="i1" type="text" length=30>
+<br>
+<input id="i2" type="text" length=30>
+<br>
+<button id="myBtn" onclick="checkMax()">Check Max</button>
+
+<script>
+function checkMax() {
+  var x = document.getElementById('i1').value;
+  var y = document.getElementById('i2').value;
+  console.log("X: ",x);
+  console.log("Y: ",y);
+  z = x > y;
+  console.log(z);
+  if (x > y) { console.log(x); }
+  else { console.log(y); }
+}
+</script>
+</body>
+</html>
