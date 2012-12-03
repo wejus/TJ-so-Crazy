@@ -7,22 +7,29 @@
   var source = sourceBuffer.toString();
   
   //Find Recipe Title
-  console.log($(source).find('title').html().match(/(.*)-/)[1].trim());  
+  var recipeTitle = console.log($(source).find('title').html().match(/(.*)-/)[1].trim());  
   
   //Get Ingredients
-  var ingredients = [];
+  var materialIngredients = [];
   $(source).find('ul.ingredient-wrap').find('span.ingredient-name').each(function(index,value) {
-    ingredients[index]=$(value).html();
+    materialIngredients[index]=$(value).html();
   });
-  console.log(ingredients);
+  //console.log(materialIngredients);
   
   //Get Quantities
   var amounts = [];
   $(source).find('ul.ingredient-wrap').find('span.ingredient-amount').each(function(index,value) {
     amounts[index]=$(value).html();
   });
-  console.log(amounts);
+  //console.log(amounts);
   
+  //Form Ingredient List
+  var ingredients = [];
+  $(materialIngredients).each(function(index,value) {
+    ingredients[index] = amounts[index] + ' ' + value;
+  });
+  console.log(ingredients);
+    
   //Get Directions
   var directions = [];
   $(source).find('div.directions').find('span.plaincharacterwrap').each(function(index,value) {
@@ -42,3 +49,13 @@
   var readyTime = $(source).find('#totalHoursSpan').html().replace(/<[^>]*>/g, "");
   console.log(readyTime); 
   
+  //Create Recipe Object
+  var recipe = {
+    name: recipeTitle,
+    ingredients: ingredients,
+    directions: directions,
+    prepTime: prepTime,
+    cookTime: cookTime,
+    readyTime: readyTime
+  }
+  console.log(recipe);
