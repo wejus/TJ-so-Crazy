@@ -7,7 +7,8 @@
   var source = sourceBuffer.toString();
   
   //Find Recipe Title
-  var recipeTitle = console.log($(source).find('title').html().match(/(.*)-/)[1].trim());  
+  var recipeTitle = $(source).find('title').html().match(/(.*)-/)[1].trim();
+  console.log(recipeTitle);  
   
   //Get Ingredients
   var materialIngredients = [];
