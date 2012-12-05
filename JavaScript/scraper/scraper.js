@@ -23,14 +23,6 @@ myCrawler.on("fetchcomplete",function(queueItem, responseBuffer, response) {
     fs.writeFile('source.html', responseBuffer, function (err) {
   		if (err) throw err;
   		console.log('It\'s saved!');
-  	
-  	/* mySource = responseBuffer.toString();
-  	TitleStart = mySource.indexOf("<title>");
-  	TitleEnd = mySource.indexOf("</title>");
-  	PageTitle = mySource.slice(TitleStart+7,TitleEnd).reduceWhiteSpace();  //! This still leaves me with one space at the beginning (and maybe at the end)
-  	console.log("Page Title: " + PageTitle);
-  	*/
-  	
 	
 	});
 });

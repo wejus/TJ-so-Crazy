@@ -60,3 +60,8 @@ var recipe = {
   readyTime: readyTime
 }
 console.log(recipe);
+
+//Find Next Recipe
+var nextRecipeURL = $(source).find('#anchorNextRecipe').attr('href');
+var nextRecipe = nextRecipeURL.match(/^.*?(?=\?)/)[0].trim();
+console.log(nextRecipe);
